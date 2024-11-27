@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "algs.net/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/algs.net.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/algs.net.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "algs.net/1.0.0": {
+      "type": "project",
+      "path": "../algs.net/algs.net.csproj",
+      "msbuildProject": "../algs.net/algs.net.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "algs.net >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Cameron\\.nuget\\packages\\": {},
@@ -39,7 +58,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Cameron\\source\\repos\\algs.net\\algs.net\\algs.net.csproj": {
+              "projectPath": "C:\\Users\\Cameron\\source\\repos\\algs.net\\algs.net\\algs.net.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
