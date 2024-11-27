@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("algs.net.tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3f3d6ba4c09cd8d00460aac43ad32ae5cc729bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("algs.net.tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("algs.net.tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
