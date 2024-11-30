@@ -11,21 +11,25 @@ namespace algs.net.tests {
 
                 switch (choice) {
                     case "1":
-                        RunTestWithClearAndPause(RunQuickSortTest, "QuickSort Test");
-                        break;
-                    case "2":
-                        RunTestWithClearAndPause(RunBubbleSortTest, "BubbleSort Test");
-                        break;
-                    case "3":
-                        RunTestWithClearAndPause(RunMergeSortTest, "MergeSort Test");
-                        break;
-                    case "4":
                         RunTestWithClearAndPause(RunAllTests, "Run All Tests");
                         break;
-                    case "5":
+                    case "2":
                         Console.Clear();
                         Console.WriteLine("Exiting... Goodbye!");
                         return;
+                    case "3":
+                        RunTestWithClearAndPause(RunQuickSortTest, "QuickSort Test");
+                        break;
+                    case "4":
+                        RunTestWithClearAndPause(RunBubbleSortTest, "BubbleSort Test");
+                        break;
+                    case "5":
+                        RunTestWithClearAndPause(RunMergeSortTest, "MergeSort Test");
+                        break;
+                    case "6":
+                        RunTestWithClearAndPause(RunInsertionSortTest, "InsertionSort Test");
+                        break;
+
                     default:
                         PrintError("Invalid choice. Please try again.");
                         break;
@@ -63,11 +67,12 @@ namespace algs.net.tests {
         private static void PrintMenu() {
             Console.Clear();
             Console.WriteLine("=== Algs.NET Test Suite ===");
-            Console.WriteLine("[1] Run QuickSort Test");
-            Console.WriteLine("[2] Run BubbleSort Test");
-            Console.WriteLine("[3] Run MergeSort Test");
-            Console.WriteLine("[4] Run All Tests");
-            Console.WriteLine("[5] Exit");
+            Console.WriteLine("[1] Run All Tests");
+            Console.WriteLine("[2] Exit");
+            Console.WriteLine("[3] Run QuickSort Test");
+            Console.WriteLine("[4] Run BubbleSort Test");
+            Console.WriteLine("[5] Run MergeSort Test");
+            Console.WriteLine("[6] Run InsertionSort Test");
             Console.Write("\nEnter your choice: ");
         }
 
@@ -85,6 +90,7 @@ namespace algs.net.tests {
             RunQuickSortTest();
             RunBubbleSortTest();
             RunMergeSortTest();
+            RunInsertionSortTest();
             Console.WriteLine("\nAll tests completed.");
         }
 
@@ -103,7 +109,6 @@ namespace algs.net.tests {
         private static void RunQuickSortTest() {
             Console.WriteLine("QuickSort Execution:");
 
-            // Small array
             int[] smallArray = { 8, 3, 1, 7, 0, 10, 2 };
             Console.WriteLine("\nSorting Small Array:");
             Metrics.MeasureExecutionTimeAndMemory("QuickSort (Small Array)", () =>
@@ -112,7 +117,6 @@ namespace algs.net.tests {
             });
             Console.WriteLine("Sorted Array: " + string.Join(", ", smallArray));
 
-            // Large random array
             int[] largeArray = GenerateRandomArray(10000);
             Console.WriteLine("\nSorting Large Random Array:");
             Metrics.MeasureExecutionTimeAndMemory("QuickSort (Large Random Array)", () =>
@@ -120,7 +124,6 @@ namespace algs.net.tests {
                 QuickSort.Sort(largeArray);
             });
 
-            // Already sorted array
             int[] sortedArray = GenerateSortedArray(10000);
             Console.WriteLine("\nSorting Already Sorted Array:");
             Metrics.MeasureExecutionTimeAndMemory("QuickSort (Sorted Array)", () =>
@@ -128,7 +131,6 @@ namespace algs.net.tests {
                 QuickSort.Sort(sortedArray);
             });
 
-            // Reverse sorted array
             int[] reverseArray = GenerateReverseArray(10000);
             Console.WriteLine("\nSorting Reverse Sorted Array:");
             Metrics.MeasureExecutionTimeAndMemory("QuickSort (Reverse Sorted Array)", () =>
@@ -142,7 +144,6 @@ namespace algs.net.tests {
         private static void RunBubbleSortTest() {
             Console.WriteLine("BubbleSort Execution:");
 
-            // Small array
             int[] smallArray = { 8, 3, 1, 7, 0, 10, 2 };
             Console.WriteLine("\nSorting Small Array:");
             Metrics.MeasureExecutionTimeAndMemory("BubbleSort (Small Array)", () =>
@@ -151,7 +152,6 @@ namespace algs.net.tests {
             });
             Console.WriteLine("Sorted Array: " + string.Join(", ", smallArray));
 
-            // Large random array
             int[] largeArray = GenerateRandomArray(10000);
             Console.WriteLine("\nSorting Large Random Array:");
             Metrics.MeasureExecutionTimeAndMemory("BubbleSort (Large Random Array)", () =>
@@ -159,7 +159,6 @@ namespace algs.net.tests {
                 BubbleSort.Sort(largeArray);
             });
 
-            // Already sorted array
             int[] sortedArray = GenerateSortedArray(10000);
             Console.WriteLine("\nSorting Already Sorted Array:");
             Metrics.MeasureExecutionTimeAndMemory("BubbleSort (Sorted Array)", () =>
@@ -167,7 +166,6 @@ namespace algs.net.tests {
                 BubbleSort.Sort(sortedArray);
             });
 
-            // Reverse sorted array
             int[] reverseArray = GenerateReverseArray(10000);
             Console.WriteLine("\nSorting Reverse Sorted Array:");
             Metrics.MeasureExecutionTimeAndMemory("BubbleSort (Reverse Sorted Array)", () =>
@@ -181,7 +179,6 @@ namespace algs.net.tests {
         private static void RunMergeSortTest() {
             Console.WriteLine("MergeSort Execution:");
 
-            // Small array
             int[] smallArray = { 8, 3, 1, 7, 0, 10, 2 };
             Console.WriteLine("\nSorting Small Array:");
             Metrics.MeasureExecutionTimeAndMemory("MergeSort (Small Array)", () => {
@@ -189,25 +186,52 @@ namespace algs.net.tests {
             });
             Console.WriteLine("Sorted Array: " + string.Join(", ", smallArray));
 
-            // Large random array
             int[] largeArray = GenerateRandomArray(10000);
             Console.WriteLine("\nSorting Large Random Array:");
             Metrics.MeasureExecutionTimeAndMemory("MergeSort (Large Random Array)", () => {
                 MergeSort.Sort(largeArray);
             });
 
-
-            // Already sorted array
             int[] sortedArray = GenerateSortedArray(10000);
             Console.WriteLine("\nSorting Already Sorted Array:");
             Metrics.MeasureExecutionTimeAndMemory("MergeSort (Sorted Array)", () => {
                 MergeSort.Sort(sortedArray);
             });
 
-            // Reverse sorted array
             int[] reverseArray = GenerateReverseArray(10000);
             Console.WriteLine("\nSorting Reverse Sorted Array:");
             Metrics.MeasureExecutionTimeAndMemory("MergeSort (Reverse Sorted Array)", () => {
+                MergeSort.Sort(reverseArray);
+            });
+
+            Console.WriteLine("\n ==== ==== ==== ====\n");
+        }
+
+        private static void RunInsertionSortTest() {
+            Console.WriteLine("InsertionSort Execution:");
+
+            int[] smallArray = { 8, 3, 1, 7, 0, 10, 2 };
+            Console.WriteLine("\nSorting Small Array:");
+            Metrics.MeasureExecutionTimeAndMemory("InsertionSort (Small Array)", () => {
+                MergeSort.Sort(smallArray);
+            });
+            Console.WriteLine("Sorted Array: " + string.Join(", ", smallArray));
+
+            int[] largeArray = GenerateRandomArray(10000);
+            Console.WriteLine("\nSorting Large Random Array:");
+            Metrics.MeasureExecutionTimeAndMemory("InsertionSort (Large Random Array)", () => {
+                MergeSort.Sort(largeArray);
+            });
+
+            int[] sortedArray = GenerateSortedArray(10000);
+            Console.WriteLine("\nSorting Already Sorted Array:");
+            Metrics.MeasureExecutionTimeAndMemory("InsertionSort (Sorted Array)", () => {
+                MergeSort.Sort(sortedArray);
+            });
+
+            int[] reverseArray = GenerateReverseArray(10000);
+            Console.WriteLine("\nSorting Reverse Sorted Array:");
+            Metrics.MeasureExecutionTimeAndMemory("InsertionSort (Reverse Sorted Array)", () => {
                 MergeSort.Sort(reverseArray);
             });
 
